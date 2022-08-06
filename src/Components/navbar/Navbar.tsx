@@ -13,8 +13,8 @@ import { Image } from './Navbar.style';
 import Images from '../../Assets/Index';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
-const pages = ['SEARCH', 'SIGN IN', 'BAG (2)' ,<FavoriteBorderIcon/>];
+import { useNavigate } from "react-router-dom";
+const pages = [{name:'SEARCH',path:''}, {name:'SIGN IN',path:'/signup'}, {name:'BAG (2)',path:''} ,{name:<FavoriteBorderIcon/>,path:''}];
 const pages1=['NEW ARRIVALS','SHOP','COLLECTIONS']
 
 const ResponsiveAppBar = () => {
@@ -22,6 +22,7 @@ const ResponsiveAppBar = () => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+  const navigate=useNavigate()
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -88,9 +89,14 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page, index) => (
+              {pages1.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+              {pages.map((page, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -120,10 +126,11 @@ const ResponsiveAppBar = () => {
             {pages.map((page,index) => (
               <Button
                 key={index}
-                onClick={handleCloseNavMenu}
+                onClick={()=>navigate(page.path)}
                 sx={{ my: 2, color: 'white', display: 'flex' }}
+                
               >
-                {index === 0 ? <SearchIcon/> : ""}{page}
+                {index === 0 ? <SearchIcon/> : ""}{page.name}
               </Button>
             ))}
           </Box>
