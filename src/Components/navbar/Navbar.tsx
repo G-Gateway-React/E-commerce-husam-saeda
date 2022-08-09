@@ -27,7 +27,7 @@ const ResponsiveAppBar = () => {
     setAnchorElNav(null);
   };
   return (
-    <AppBar sx={{background:'none'}} position="static">
+    <AppBar sx={{background:'none' , boxShadow : "none"}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

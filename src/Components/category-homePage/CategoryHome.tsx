@@ -68,13 +68,15 @@ export default function CategoryHome() {
      
       {itemData.map((item) => (
         <Grid item lg={4} md={4} sm={6} xs={12} key={item.img}>
+          <ImageListItemCategory >
           <Image
             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
             srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
               />
-              <H5>{item.title}</H5>
+            <H5>{item.title}</H5>
+             </ImageListItemCategory>
         </Grid>
         //   <Card key={item.img} name={ item.title} url ={`${item.img}?w=164&h=164&fit=crop&auto=format`} />
       ))}
